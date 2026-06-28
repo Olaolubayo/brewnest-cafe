@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BrewNest — Coffee & Kitchen</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  </head>
+  <body>
+
+    <!-- ===================== NAVBAR ===================== -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">BrewNest</a>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#footer">Contact</a></li>
+        </ul>
+        <a href="#reservation" class="nav-cta">Book a Table</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ===================== HERO ===================== -->
+    <header class="hero">
+      <div class="hero-content">
+        <span class="hero-eyebrow">Est. 2015 · Lagos, Nigeria</span>
+        <h1 class="hero-title">Where Every Cup<br />Tells a Story</h1>
+        <p class="hero-sub">
+          Handcrafted coffee, fresh bites, and a corner that feels like yours.
+          No rush. No noise. Just good things.
+        </p>
+        <div class="hero-actions">
+          <a href="#menu" class="btn btn-primary">Explore the Menu</a>
+          <a href="#reservation" class="btn btn-outline">Reserve a Table</a>
+        </div>
+      </div>
+      <div class="hero-badge">
+        <span class="badge-text">Open Today</span>
+        <span class="badge-hours">8am – 10pm</span>
+      </div>
+    </header>
+
+    <section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+
+      <!-- LEFT TEXT -->
+      <div class="about-text reveal reveal-left delay-1">
+        <span class="section-label">Our Story</span>
+        <h2 class="section-title">A Little Spot That Grew Into a Community</h2>
+
+        <p>
+          BrewNest started as a small idea — a place in Lagos where people
+          could slow down, share a meal, and feel at home. What began with
+          four tables and one espresso machine has grown into a daily ritual
+          for hundreds of guests.
+        </p>
+
+        <p>
+          We source our beans directly from farms in Plateau State, bake
+          fresh every morning, and treat every order like it's the only one
+          that matters.
+        </p>
+      </div>
+
+      <!-- RIGHT HOURS -->
+      <div class="about-hours reveal reveal-right delay-2">
+        <span class="section-label">Opening Hours</span>
+
+        <table class="hours-table">
+          <tbody>
+            <tr>
+              <td>Monday – Friday</td>
+              <td>8:00 am – 10:00 pm</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="about-tags">
+          <span class="tag">Free Wi-Fi</span>
+          <span class="tag">Indoor & Outdoor</span>
+          <span class="tag">Pet Friendly</span>
+          <span class="tag">Takeaway</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+        
+
+    <!-- ===================== MENU ===================== -->
+    <section class="menu-section" id="menu">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">What We Serve</span>
+          <h2 class="section-title">Our Menu</h2>
+          <p class="section-sub">Build your order below. Add as many items as you like.</p>
+        </div>
+
+        <!-- Category Tabs -->
+        <div id="menuTabs">
+          <button class="tab-btn active" data-category="coffee">Coffee</button>
+          <button class="tab-btn" data-category="drinks">Cold Drinks</button>
+          <button class="tab-btn" data-category="snacks">Snacks</button>
+          <button class="tab-btn" data-category="meals">Meals</button>
+          
+        </div>
+
+        <div class="menu-layout">
+
+          <!-- Menu Grid -->
+          <div class="menu-grid" id="menuGrid">
+            <!-- JS will render menu items here -->
+          </div>
+
+          <!-- Order Summary Panel -->
+          <aside class="order-panel" id="orderPanel">
+            <div class="order-header">
+                <h3>Your Order</h3>
+                <div class="order-wrapper">
+                  <span class="order-count" id="orderCount">0</span> 
+                  items
+                </div>
+            </div>
+
+            <div id="orderEmpty">
+              <p>Nothing here yet. Add something from the menu.</p>
+            </div>
+
+            <ul class="order-list" id="orderList">
+              <!-- JS will render order items here -->
+            </ul>
+
+            <div id="orderFooter">
+              <div class="order-total">
+                <span>Total</span>
+                <span id="orderTotal">₦0</span>
+              </div>
+              <button class="btn btn-primary btn-full" id="placeOrderBtn">
+                Place Order
+              </button>
+              <button class="btn btn-ghost btn-full" id="clearOrderBtn">
+                Clear Order
+              </button>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Order Confirmation Modal -->
+    <div class="modal-overlay" id="orderModal">            
+      <button id="cancelBtn">X</button>
+      <div class="modal">        
+        <div class="modal-icon">✓</div>
+        <h3 class="modal-title">Order Received!</h3>
+        <p class="modal-sub">Here's your receipt. Show this at the counter.</p>
+        <div class="receipt" id="receiptContent">
+          <!-- JS renders receipt here -->
+        </div>
+        <button class="btn btn-primary btn-full" id="downloadReceiptBtn">Download Receipt</button>
+      </div>
+    </div>
+    <section class="reviews-section" id="reviews">
+  <div class="container">
+
+    <!-- Header -->
+    <div class="section-header">
+      <span class="section-label">Customer Love</span>
+      <h2 class="section-title">What Our Guests Say</h2>
+      <p class="section-sub">Real feedback from people who've sat at our tables.</p>
+    </div>
+
+    <!-- Carousel -->
+    <div class="reviews-carousel">
+      <button class="carousel-arrow" id="prevReviewBtn">‹</button>
+
+      <div class="carousel-track" id="reviewsTrack">
+        <!-- JS renders review cards here -->
+      </div>
+
+      <button class="carousel-arrow" id="nextReviewBtn">›</button>
+    </div>
+
+    <!-- Leave a Review Form -->
+    <div class="review-form-wrap">
+      <h3>Leave a Review</h3>
+      <form id="reviewForm" novalidate>
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" id="reviewerName" />
+          <span class="field-error" id="reviewerNameError"></span>
+        </div>
+
+        <div class="form-group">
+          <label>Rating</label>
+          <div class="star-input" id="starInput">            
+            <span class="star" data-value="1">&#9734;</span>  <!-- empty star -->
+            <span class="star" data-value="2">&#9734;</span>  <!-- empty star -->
+            <span class="star" data-value="3">&#9734;</span>  <!-- empty star -->
+            <span class="star" data-value="4">&#9734;</span>  <!-- empty star -->
+            <span class="star" data-value="5">&#9734;</span>  <!-- empty star -->
+          </div>
+          <span class="field-error" id="ratingError"></span>
+        </div>
+
+        <div class="form-group">
+          <label>Your Review</label>
+          <textarea id="reviewComment" rows="3"></textarea>
+          <span class="field-error" id="reviewCommentError"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit Review</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+    <!-- ===================== RESERVATION ===================== -->
+    <section class="reservation-section" id="reservation">
+      <div class="container">
+        <div class="reservation-grid">
+
+          <div class="reservation-info">
+            <span class="section-label">Come Sit With Us</span>
+            <h2 class="section-title">Reserve a Table</h2>
+            <p>
+              Walk-ins are always welcome, but a reservation means your favourite
+              spot is waiting when you arrive.
+            </p>
+            <ul class="reservation-perks">
+              <li>Guaranteed seating for your party</li>
+              <li>Special occasion setups on request</li>
+              <li>Priority service for reserved guests</li>
+            </ul>
+            <div class="reservation-note">
+              <strong>Heads up:</strong> Reservations must be made at least
+              2 hours in advance. We hold tables for 15 minutes.
+            </div>
+          </div>
+
+          <div class="reservation-form-wrap">
+            <!-- Reservation Form -->
+            <form id="reservationForm" novalidate>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="guestName">Full Name</label>
+                  <input
+                    type="text"
+                    id="guestName"
+                    name="guestName"
+                    placeholder="e.g. Olubayo Ola"
+                    autocomplete="name"
+                  />
+                  <span class="field-error" id="guestNameError"></span>
+                </div>
+                <div class="form-group">
+                  <label for="guestPhone">Phone Number</label>
+                  <input
+                    type="tel"
+                    id="guestPhone"
+                    name="guestPhone"
+                    placeholder="e.g. 08012345678"
+                    autocomplete="tel"
+                  />
+                  <span class="field-error" id="guestPhoneError"></span>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="reservationDate">Date</label>
+                  <input
+                    type="date"
+                    id="reservationDate"
+                    name="reservationDate"
+                  />
+                  <span class="field-error" id="reservationDateError"></span>
+                </div>
+                <div class="form-group">
+                  <label for="reservationTime">Time</label>
+                  <input
+                    type="time"
+                    id="reservationTime"
+                    name="reservationTime"
+                    min="11:00"
+                    max="20:00"
+                  />
+                  <span class="field-error" id="reservationTimeError"></span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="guestCount">Number of Guests</label>
+                <select id="guestCount" name="guestCount">
+                  <option value="">Select guests</option>
+                  <option value="1">1 person</option>
+                  <option value="2">2 people</option>
+                  <option value="3">3 people</option>
+                  <option value="4">4 people</option>
+                  <option value="5">5 people</option>
+                  <option value="6">6 people</option>
+                  <option value="7+">7+ people (large group)</option>
+                </select>
+                <span class="field-error" id="guestCountError"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="specialRequest">Special Requests <span class="optional">(optional)</span></label>
+                <textarea
+                  id="specialRequest"
+                  name="specialRequest"
+                  rows="3"
+                  placeholder="Birthday setup, dietary needs, accessibility requirements..."
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-full" id="reserveBtn">
+                Confirm Reservation
+              </button>
+
+            </form>
+
+            <!-- Confirmation Card (hidden by default) -->
+            <div class="confirmation-card" id="confirmationCard">
+              <div class="confirm-icon">✅</div>
+              <h3>You're all set!</h3>
+              <p>Your table has been reserved. See you soon.</p>
+              <div class="confirm-details" id="confirmDetails">
+                <!-- JS renders booking details here -->
+              </div>
+              <button class="btn btn-outline btn-full" id="newReservationBtn">
+                Make Another Reservation
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer" id="footer">
+      <div class="container">
+        <div class="footer-grid">
+
+          <div class="footer-brand">
+            <span class="footer-logo">BrewNest</span>
+            <p>A casual café in the heart of Lagos, Nigeria. Good coffee, good food, great company.</p>
+            <div class="footer-socials">
+              <a href="#" aria-label="Instagram">Ig</a>
+              <a href="#" aria-label="Twitter">Tw</a>
+              <a href="#" aria-label="Facebook">Fb</a>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <h4>Navigate</h4>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#menu">Menu</a></li>
+              <li><a href="#reservation">Reserve</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-contact">
+            <h4>Find Us</h4>
+            <address>
+              <p>14 Admiralty Way,<br />Lekki Phase 1, Lagos</p>
+              <p><a href="tel:+2348012345678">+234 8113581767</a></p>
+              <p><a href="mailto:hello@brewnest.ng">hello@brewnest.ng</a></p>
+            </address>
+          </div>
+
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 BrewNest. Built by <a href="https://github.com/Olaolubayo" target="_blank">Olubayo</a>.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JS files -->    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script type="module" src="app.js"></script>
+
+  </body>
+</html>
