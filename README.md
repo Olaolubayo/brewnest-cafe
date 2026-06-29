@@ -75,8 +75,9 @@ npx serve .
 
 ## Screenshots
 
-> Add screenshots here once deployed.
-
+![BrewNest homepage](brewnest.jpg)
+![BrewNest about section](brewnest-about.jpg)
+![BrewNest reservation form](reservation.jpg)
 ---
 
 ## Author
