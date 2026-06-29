@@ -75,9 +75,11 @@ npx serve .
 
 ## Screenshots
 
-![BrewNest homepage](brewnest.jpg)
-![BrewNest about section](brewnest-about.jpg)
-![BrewNest reservation form](reservation.jpg)
+![BrewNest homepage](assets/brewnest.jpg)
+![BrewNest about section](assets/brewnest-about.jpg)
+![BrewNest reservation form](assets/reservation.jpg)
+![BrewNest review](assets/review.jpg)
+
 ---
 
 ## Author
